@@ -5,6 +5,8 @@
   components:
   - type: Body
     prototype: Quadborg
+  - type: Inventory
+    templateId: borgquad #Hardlight - Changes Quadborgs over to use our armor slots
   - type: Sprite
     sprite: Floof/Mobs/Silicon/quad.rsi
     scale: 0.7, 0.7
@@ -28,10 +30,13 @@
         state: quadsprite
   - type: Stripping
   - type: Strap
+    blacklist:
+      components:
+      - BorgChassis
     position: Stand
     buckleOffset: "0,0.5"
   - type: Sanitized
-  - type: Hands 
+  - type: Hands
   - type: Cuffable
   - type: ComplexInteraction
   - type: IntrinsicRadioTransmitter
