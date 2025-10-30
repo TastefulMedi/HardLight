@@ -29,8 +29,8 @@
       movement:
         state: quadsprite
   - type: Stripping
-  - type: Strap
-    blacklist:
+  - type: Strap #Hardlight. Enables buckling to borgs
+    blacklist: # Hardlight. Stop crashing the damned clients and server!
       components:
       - BorgChassis
     position: Stand
