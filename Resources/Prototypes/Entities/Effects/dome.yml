@@ -171,8 +171,8 @@
   - type: DamageContacts
     damage:
       types:
-        Slash: -1.5
-        Piercing: -1.5
+        Brute: -2
+        Burn: -1
 
 - type: entity
   id: EnergyDomeHarming #HL, Simple opposite to the healing dome
