@@ -10,7 +10,7 @@
   startingGear: SecurityOfficerGear
   icon: "JobIconSecurityOfficer"
   supervisors: job-supervisors-hos
-  # canBeAntag: false
+  canBeAntag: false
   ## Frontier: commented out stuff below
   access:
   - Security

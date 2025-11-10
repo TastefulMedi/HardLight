@@ -27,7 +27,7 @@
 #  requireAdminNotify: true
 #  joinNotifyCrew: true
 #  supervisors: job-supervisors-centcom
-#  canBeAntag: false
+  canBeAntag: false
   access:
     - Captain # Just making sure in the case of any error that this role cannot be used for any bad doing.
   accessGroups:
