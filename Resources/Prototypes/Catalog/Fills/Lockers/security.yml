@@ -219,7 +219,8 @@
     rolls: !type:ConstantNumberSelector
       value: 5
     children:
-    - id: NFWeaponEnergyPistolDisabler # Frontier: WeaponDisabler<NFWeaponEnergyPistolDisabler
+    - id: NFWeaponEnergySubMachineGunDisabler = HL
+    
 
 - type: entity
   parent: [GunSafeBaseSecure, BaseC2ContrabandUnredeemable ] # Frontier: BaseSecurityContraband<BaseC2ContrabandUnredeemable
