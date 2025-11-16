@@ -25,7 +25,6 @@
     supervisors: job-supervisors-captain
     requireAdminNotify: true
     canBeAntag: false
-    # Frontier: default access
     access:
     - Command
     - HeadOfPersonnel
@@ -53,7 +52,7 @@
     - Medical
     - Frontier
     accessGroups:
-    - GeneralAccess
+    - GeneralAccess # Frontier: default access
     - AllAccess
     special:
     - !type:AddImplantSpecial
