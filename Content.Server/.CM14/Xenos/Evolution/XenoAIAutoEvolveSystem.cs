@@ -2,6 +2,7 @@ using Content.Shared.Actions;
 using Content.Shared.CM14.Xenos;
 using Content.Shared.CM14.Xenos.Evolution;
 using Robust.Server.GameObjects;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Timing;
 
 namespace Content.Server.CM14.Xenos.Evolution;
@@ -13,6 +14,7 @@ public sealed class XenoAIAutoEvolveSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly MetaDataSystem _metaData = default!;
 
     public override void Initialize()
     {
@@ -32,9 +34,9 @@ public sealed class XenoAIAutoEvolveSystem : EntitySystem
         base.Update(frameTime);
 
         var curTime = _timing.CurTime;
-        var query = EntityQueryEnumerator<XenoAIAutoEvolveComponent, XenoComponent>();
+        var query = EntityQueryEnumerator<XenoAIAutoEvolveComponent, XenoComponent, MetaDataComponent>();
 
-        while (query.MoveNext(out var uid, out var autoEvolve, out var xeno))
+        while (query.MoveNext(out var uid, out var autoEvolve, out var xeno, out var metaData))
         {
             // Skip player-controlled xenos - only AI xenos should auto-evolve
             if (HasComp<ActorComponent>(uid))
@@ -49,15 +51,34 @@ public sealed class XenoAIAutoEvolveSystem : EntitySystem
 
             // Skip if this xeno can't evolve
             if (xeno.EvolvesTo.Count == 0)
+            {
+                Log.Debug($"[XenoAI] {ToPrettyString(uid)} has no evolution targets");
                 continue;
+            }
 
-            // Check if the evolve action exists and is ready
+            // Check if the evolve action exists
             if (xeno.EvolveAction == null)
+            {
+                Log.Debug($"[XenoAI] {ToPrettyString(uid)} has no evolve action");
                 continue;
+            }
 
-            // Check if the action is off cooldown
-            if (!_actions.ValidAction(xeno.EvolveAction.Value))
-                continue;
+                Log.Debug($"[XenoAI] {ToPrettyString(uid)} - Action cooldown remaining: {timeRemaining.TotalSeconds:F1}s");
+            var cooldown = _actions.GetCooldown(xeno.EvolveAction.Value);
+            if (cooldown.HasValue)
+            {
+                var timeRemaining = cooldown.Value.End - curTime;
+                Log.Debug($"[XenoAI] {ToPrettyString(uid)} - Action cooldown remaining: {timeRemaining.TotalSeconds:F1}s");
+
+                Log.Debug($"[XenoAI] {ToPrettyString(uid)} - No cooldown on evolve action");
+                    continue;
+            }
+            Log.Info($"[XenoAI] Triggering evolution for {ToPrettyString(uid)}");
+            {
+                Log.Debug($"[XenoAI] {ToPrettyString(uid)} - No cooldown on evolve action");
+            }
+
+            Log.Info($"[XenoAI] Triggering evolution for {ToPrettyString(uid)}");
 
             // Trigger the evolution action
             var ev = new XenoOpenEvolutionsEvent();
