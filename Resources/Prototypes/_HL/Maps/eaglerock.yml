@@ -1,7 +1,7 @@
 - type: gameMap
   id: Eaglerock
   mapName: 'Hardlight Eaglerock Station'
-  mapPath: /Maps/eaglerock.yml
+  mapPath: Maps/_HL/eaglerock.yml
   minPlayers: 0
   maxPlayers: 100
   stations:
