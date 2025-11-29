@@ -4,8 +4,8 @@ meta:
   engineVersion: 267.3.0
   forkId: ""
   forkVersion: ""
-  time: 11/29/2025 18:30:24
-  entityCount: 21209
+  time: 11/29/2025 23:18:41
+  entityCount: 21181
 maps:
 - 1
 grids:
@@ -83,7 +83,7 @@ entities:
       pos: -0.5,-0.515625
       parent: 1
     - type: BecomesStation
-      id: Eaglerock Outpost
+      id: Eaglerock
     - type: SalvageMobRestrictionsGrid
       mobsToKill: []
     - type: NavMap
@@ -7871,7 +7871,7 @@ entities:
       pos: -21.5,45.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -20254.953
+      secondsUntilStateChange: -20389.264
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -8622,7 +8622,7 @@ entities:
       pos: -23.5,-12.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -106569.41
+      secondsUntilStateChange: -106703.72
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -8634,7 +8634,7 @@ entities:
       pos: -23.5,-13.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -106759.805
+      secondsUntilStateChange: -106894.12
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -8667,7 +8667,7 @@ entities:
       pos: -23.5,-1.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -98398.46
+      secondsUntilStateChange: -98532.77
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -8752,7 +8752,7 @@ entities:
       pos: 21.5,-13.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -87788.91
+      secondsUntilStateChange: -87923.22
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -8798,7 +8798,7 @@ entities:
       pos: 23.5,-5.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -57759.613
+      secondsUntilStateChange: -57893.926
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -9032,7 +9032,7 @@ entities:
       pos: 20.5,17.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -57307.547
+      secondsUntilStateChange: -57441.86
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -9773,7 +9773,7 @@ entities:
       pos: -23.5,39.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -14732.69
+      secondsUntilStateChange: -14867.002
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -124683,6 +124683,13 @@ entities:
     - type: Transform
       pos: 12.5,2.5
       parent: 2
+- proto: SpawnMobCrabAtmos
+  entities:
+  - uid: 4620
+    components:
+    - type: Transform
+      pos: 44.5,34.5
+      parent: 2
 - proto: SpawnMobFoxRenault
   entities:
   - uid: 420
@@ -143847,156 +143854,6 @@ entities:
     components:
     - type: Transform
       pos: 49.5,39.5
-      parent: 2
-- proto: WarpPoint
-  entities:
-  - uid: 13436
-    components:
-    - type: Transform
-      pos: 0.5,1.5
-      parent: 2
-  - uid: 13438
-    components:
-    - type: Transform
-      pos: 52.5,7.5
-      parent: 2
-  - uid: 13439
-    components:
-    - type: Transform
-      pos: 39.5,-8.5
-      parent: 2
-  - uid: 13440
-    components:
-    - type: Transform
-      pos: 19.5,-17.5
-      parent: 2
-  - uid: 13441
-    components:
-    - type: Transform
-      pos: -30.5,-12.5
-      parent: 2
-  - uid: 13442
-    components:
-    - type: Transform
-      pos: -27.5,3.5
-      parent: 2
-  - uid: 13443
-    components:
-    - type: Transform
-      pos: -27.5,10.5
-      parent: 2
-  - uid: 13444
-    components:
-    - type: Transform
-      pos: -43.5,1.5
-      parent: 2
-  - uid: 13446
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 34.5,7.5
-      parent: 2
-  - uid: 14772
-    components:
-    - type: Transform
-      pos: -29.5,17.5
-      parent: 2
-  - uid: 14773
-    components:
-    - type: Transform
-      pos: -27.5,25.5
-      parent: 2
-  - uid: 14774
-    components:
-    - type: Transform
-      pos: -41.5,27.5
-      parent: 2
-  - uid: 20844
-    components:
-    - type: Transform
-      pos: -25.5,43.5
-      parent: 2
-  - uid: 20845
-    components:
-    - type: Transform
-      pos: -34.5,35.5
-      parent: 2
-  - uid: 20846
-    components:
-    - type: Transform
-      pos: -47.5,36.5
-      parent: 2
-  - uid: 20847
-    components:
-    - type: Transform
-      pos: -33.5,52.5
-      parent: 2
-  - uid: 20855
-    components:
-    - type: Transform
-      pos: -47.5,31.5
-      parent: 2
-  - uid: 20856
-    components:
-    - type: Transform
-      pos: 27.5,5.5
-      parent: 2
-  - uid: 20858
-    components:
-    - type: Transform
-      pos: 44.5,23.5
-      parent: 2
-  - uid: 20859
-    components:
-    - type: Transform
-      pos: 43.5,33.5
-      parent: 2
-  - uid: 20860
-    components:
-    - type: Transform
-      pos: 29.5,0.5
-      parent: 2
-- proto: WarpPointBombing
-  entities:
-  - uid: 4620
-    components:
-    - type: Transform
-      pos: -35.5,-3.5
-      parent: 2
-  - uid: 5053
-    components:
-    - type: Transform
-      pos: 13.5,-19.5
-      parent: 2
-  - uid: 5054
-    components:
-    - type: Transform
-      pos: 0.5,-12.5
-      parent: 2
-  - uid: 17657
-    components:
-    - type: Transform
-      pos: -28.5,10.5
-      parent: 2
-  - uid: 17658
-    components:
-    - type: Transform
-      pos: -28.5,17.5
-      parent: 2
-  - uid: 17659
-    components:
-    - type: Transform
-      pos: -27.5,24.5
-      parent: 2
-  - uid: 17660
-    components:
-    - type: Transform
-      pos: -33.5,53.5
-      parent: 2
-  - uid: 20857
-    components:
-    - type: Transform
-      pos: 28.5,5.5
       parent: 2
 - proto: WaterCooler
   entities:
