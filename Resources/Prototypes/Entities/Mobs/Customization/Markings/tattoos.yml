@@ -114,7 +114,6 @@
   id: TattooEyeRight
   bodyPart: Eyes
   markingCategory: Head
-  speciesRestriction: [Human, HumanHybrid, SlimePerson, Reptilian, Dwarf, Felinid, Oni, Harpy, Rodentia, Feroxi, Lamia, Plasmaman, Canid, Kitsune] # Delta V - Felinid, Oni, Harpy, Rodentia, Feroxi; The Den - Canid
   speciesRestriction: [Dwarf, Diona, Human, SlimePerson, Felinid, Oni, Harpy, Reptilian, Vulpkanin, Rodentia, Goblin, Sheleg, IPC, Feroxi, Moth, Arachnid, Kitsune] # Delta V - Felinid, Vulpkanin, Oni, Harpy
   coloring:
     default:

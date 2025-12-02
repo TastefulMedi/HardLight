@@ -92,8 +92,6 @@
       collection: VulpkaninScreams # Floofstation
     Laugh:
       collection: MaleLaugh
-    Yap: #Floof
-      collection: VulpkaninYap
     Sneeze:
       collection: MaleSneezes
     Cough:
@@ -146,8 +144,6 @@
       collection: VulpkaninScreams # Floofstation
     Laugh:
       collection: FemaleLaugh
-    Yap: #Floof
-      collection: VulpkaninYap
     Sneeze:
       collection: FemaleSneezes
     Cough:
@@ -280,7 +276,7 @@
       collection: VulpkaninBarks
     Squeak:
       path: /Audio/Animals/mouse_squeak.ogg
-      
+
 - type: emoteSounds
   id: UnisexChitinid
   params:

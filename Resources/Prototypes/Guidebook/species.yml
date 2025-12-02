@@ -102,6 +102,7 @@
 - type: guideEntry
   id: Harpy
   name: species-name-harpy
+  text: "/ServerInfo/Guidebook/Mobs/_DV/Harpy.xml" # DeltaV
 
 - type: guideEntry
   id: Avali
