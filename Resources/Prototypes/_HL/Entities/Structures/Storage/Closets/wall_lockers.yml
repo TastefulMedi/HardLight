@@ -24,9 +24,19 @@
     maxItemSize: Ginormous
     grid:
     - 0,0,19,9
+    blacklist:
+      components:
+      - StorageFill
+      - PresetIdCard
+      - IdCard
+      - Access
+      - Store
+      - Cash
+      - Headset
   - type: Construction
     graph: LockerWallBluespace
     node: done
+  - type: HLPersistOnShipSave
 
 - type: entity
   id: HLLockerWallMedical
