@@ -8,6 +8,7 @@
   - Quartermaster
   - SalvageSpecialist
   - MailCarrier
+  - SalvageQuadBorg
 
 - type: department
   id: Civilian
@@ -84,6 +85,7 @@
   - ChiefEngineer
   - StationEngineer
   - TechnicalAssistant
+  - EngineeringQuadBorg
 
 
 - type: department
@@ -114,6 +116,7 @@
   - Warden
   - PrisonGuard
   - Prisoner
+  - SecurityQuadBorg
 
 - type: department
   id: Science

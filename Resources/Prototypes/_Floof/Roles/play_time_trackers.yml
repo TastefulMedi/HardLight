@@ -7,8 +7,8 @@
 - type: playTimeTracker
   id: JobFreelancer
   
-- type: playTimeTracker
-  id: JobServiceQuadBorg
+# - type: playTimeTracker
+  # id: JobServiceQuadBorg
 
-- type: playTimeTracker
-  id: JobMedicalQuadBorg
+# - type: playTimeTracker
+  # id: JobMedicalQuadBorg
