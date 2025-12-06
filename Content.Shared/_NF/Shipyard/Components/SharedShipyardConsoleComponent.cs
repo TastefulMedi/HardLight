@@ -11,7 +11,7 @@ namespace Content.Shared._NF.Shipyard.Components;
 [RegisterComponent, NetworkedComponent, Access(typeof(SharedShipyardSystem))]
 public sealed partial class ShipyardConsoleComponent : Component
 {
-    public static string TargetIdCardSlotId = "ShipyardConsole-targetId";
+    public const string TargetIdCardSlotId = "ShipyardConsole-targetId";
 
     [DataField]
     public ItemSlot TargetIdSlot = new();
@@ -67,4 +67,20 @@ public sealed partial class ShipyardConsoleComponent : Component
     /// </summary>
     [DataField]
     public bool IgnoreBaseSaleRate;
+
+    // Pending load confirmation state (server-driven, replicated for UI awareness if needed)
+    [DataField]
+    public NetEntity? PendingLoadShuttle;
+
+    [DataField]
+    public string? PendingLoadName;
+
+    [DataField]
+    public int PendingLoadCost;
+
+    [DataField]
+    public Guid? PendingLoadRequester;
+
+    [DataField]
+    public TimeSpan? PendingLoadExpiresAt;
 }
