@@ -62,7 +62,7 @@ public abstract class SharedDisposalUnitSystem : EntitySystem
     [Dependency] private   readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private   readonly SharedMapSystem _map = default!;
     [Dependency] private readonly SharedDeviceLinkSystem _device = default!; // Goobstation
-    public static readonly ProtoId<SourcePortPrototype> ReadyPort = "DisposalReady"; // Goobstation
+    // public static readonly ProtoId<SourcePortPrototype> ReadyPort = "DisposalReady"; // Goobstation
 
     protected static TimeSpan ExitAttemptDelay = TimeSpan.FromSeconds(0.5);
 
@@ -552,7 +552,7 @@ public abstract class SharedDisposalUnitSystem : EntitySystem
         if (state == DisposalsPressureState.Ready)
         {
             component.NextPressurized = TimeSpan.Zero;
-            _device.InvokePort(uid, ReadyPort); // Goobstation
+            // _device.InvokePort(uid, ReadyPort); // Goobstation
 
             // Manually engaged
             if (component.Engaged)
