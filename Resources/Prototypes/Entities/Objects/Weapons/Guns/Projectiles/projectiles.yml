@@ -1356,8 +1356,6 @@
     damage:
       types:
         Shock: 0
-  - type: TimedDespawn
-    lifetime: 15
   - type: EmpOnTrigger
     range: 2
     energyConsumption: 2700000
