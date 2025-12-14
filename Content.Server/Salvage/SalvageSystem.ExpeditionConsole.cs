@@ -52,6 +52,28 @@ public sealed partial class SalvageSystem
 
         station ??= _station.GetOwningStation(consoleUid);
 
+        // If the console is on a shuttle, DO NOT attach expedition data to the owning station.
+        // Shuttle missions must use grid-local data only to avoid duplicating state on the station prototype.
+        if (TryComp(consoleUid, out TransformComponent? shuttleXform))
+        {
+            var gridUid = shuttleXform.GridUid ?? Transform(consoleUid).GridUid;
+            if (gridUid != null && HasComp<ShuttleComponent>(gridUid.Value))
+            {
+                // Always use the shuttle grid for expedition data.
+                if (TryComp<SalvageExpeditionDataComponent>(gridUid.Value, out var gridDataExisting))
+                    return gridDataExisting;
+
+                var gridData = EnsureComp<SalvageExpeditionDataComponent>(gridUid.Value);
+                gridData.Cooldown = false;
+                gridData.CanFinish = false;
+                gridData.ActiveMission = 0;
+                gridData.CooldownTime = TimeSpan.Zero;
+                gridData.NextOffer = _timing.CurTime;
+                Dirty(gridUid.Value, gridData);
+                return gridData;
+            }
+        }
+
         if (station != null)
         {
             // Prefer station-local expedition data; create if missing so consoles don't share global state.
@@ -74,52 +96,20 @@ public sealed partial class SalvageSystem
         // Some purchased shuttles have their own station entity without expedition data.
         // If this console is on a shuttle, allow using any station's expedition data
         // so expeditions remain functional across restarts.
-        var gridUid = xform?.GridUid ?? Transform(consoleUid).GridUid;
-        if (gridUid != null && HasComp<ShuttleComponent>(gridUid.Value))
+        var shuttleGridUidFallback = xform?.GridUid ?? Transform(consoleUid).GridUid;
+        if (shuttleGridUidFallback != null && HasComp<ShuttleComponent>(shuttleGridUidFallback.Value))
         {
-            // If console is on a shuttle without a station association, try to resolve its owning station via transform.
-            var owningStation = _station.GetOwningStation(consoleUid, xform);
-            if (owningStation != null)
-            {
-                if (TryComp<SalvageExpeditionDataComponent>(owningStation.Value, out var data))
-                    return data;
+            // For shuttle consoles, always return grid-local expedition data (no station involvement).
+            if (TryComp<SalvageExpeditionDataComponent>(shuttleGridUidFallback.Value, out var gridData))
+                return gridData;
 
-                // Create per-station data to prevent different shuttles from sharing.
-                var created = EnsureComp<SalvageExpeditionDataComponent>(owningStation.Value);
-                created.Cooldown = false;
-                created.CanFinish = false;
-                created.ActiveMission = 0;
-                created.CooldownTime = TimeSpan.Zero;
-                created.NextOffer = _timing.CurTime;
-                Dirty(owningStation.Value, created);
-                return created;
-            }
-
-            // Fallback: try to resolve via the shuttle grid's owning station.
-            var gridStation = _station.GetOwningStation(gridUid.Value);
-            if (gridStation != null)
-            {
-                if (TryComp<SalvageExpeditionDataComponent>(gridStation.Value, out var gridData))
-                    return gridData;
-
-                var createdGridData = EnsureComp<SalvageExpeditionDataComponent>(gridStation.Value);
-                createdGridData.Cooldown = false;
-                createdGridData.CanFinish = false;
-                createdGridData.ActiveMission = 0;
-                createdGridData.CooldownTime = TimeSpan.Zero;
-                createdGridData.NextOffer = _timing.CurTime;
-                Dirty(gridStation.Value, createdGridData);
-                return createdGridData;
-            }
-
-            // Ultimate fallback: attach expedition data to the shuttle grid itself so refresh/claim works.
-            var gridExpData = EnsureComp<SalvageExpeditionDataComponent>(gridUid.Value);
+            var gridExpData = EnsureComp<SalvageExpeditionDataComponent>(shuttleGridUidFallback.Value);
             gridExpData.Cooldown = false;
             gridExpData.CanFinish = false;
             gridExpData.ActiveMission = 0;
             gridExpData.CooldownTime = TimeSpan.Zero;
             gridExpData.NextOffer = _timing.CurTime;
-            Dirty(gridUid.Value, gridExpData);
+            Dirty(shuttleGridUidFallback.Value, gridExpData);
             return gridExpData;
         }
 

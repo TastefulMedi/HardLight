@@ -969,24 +969,8 @@ public sealed class RoundPersistenceSystem : EntitySystem
     /// </summary>
     private bool ShouldUpdateShuttleConsole(EntityUid consoleUid, EntityUid? consoleStation, EntityUid expeditionStation)
     {
-        // If console is not on a station, skip it
-        if (consoleStation == null)
-            return false;
-
-        // Check if the console is on a shuttle (has ShuttleComponent) that was purchased
-        // We look for shuttles that have expedition consoles but are on a different station
-        var consoleGrid = Transform(consoleUid).GridUid;
-        if (consoleGrid == null)
-            return false;
-
-        // If this grid is a shuttle (has ShuttleComponent), allow updating from any expedition station
-        // This ensures that expedition consoles on purchased shuttles get updates regardless of
-        // which station the shuttle belongs to vs which station has the expedition data
-        if (HasComp<ShuttleComponent>(consoleGrid.Value))
-        {
-            return true;
-        }
-
+        // Do not push station expedition data to shuttle consoles.
+        // Shuttles maintain grid-local `SalvageExpeditionDataComponent` and must not be overlaid by station data.
         return false;
     }
 
